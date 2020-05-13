@@ -49,7 +49,6 @@ int main() {
     int** parking_area; 
     parking_area = init_parking_area(size);
     fill_defaults(parking_area, size);
-    printf("Parkin area default\n");
 
     // Fill cars into parking space
     int x, y;
@@ -157,7 +156,7 @@ void calculate_indexes(int** distances_matrix, int size) {
     
 }
 /** 
- * Fills every index of distances_matrix with max_distane variable value
+ * Fills every index of distances_matrix with max_distance variable value
  * 
  * @param distances_matrix represents individual slots' manhattan distances, max_distance in case slot is occupied 
  * @param size represents size of the (size x size) matrix 
@@ -184,7 +183,6 @@ int** init_distances_matrix(int size) {
     int **distances_matrix = (int **)malloc(ROW * sizeof(int *)); 
     for (int i = 0; i < ROW; i++) 
         distances_matrix[i] = (int *)malloc(COL * sizeof(int)); 
-    // Note that arr[i][j] is same as *(*(arr+i)+j) 
     return distances_matrix;
 }
 /** 
@@ -196,7 +194,7 @@ int** init_distances_matrix(int size) {
 int** init_parking_area(int size) {
     const int ROW = size;
     const int COL = size;    
-    int **parking_area = (int **)malloc(ROW * sizeof(int *)); 
+    int** parking_area = (int **)malloc(ROW * sizeof(int *)); 
     for (int i = 0; i < ROW; i++) 
         parking_area[i] = (int *)malloc(COL * sizeof(int)); 
     // Note that arr[i][j] is same as *(*(arr+i)+j) 
@@ -251,8 +249,8 @@ int get_num_of_cars() {
  *
  * @param a x coordinate of point A
  * @param b x coordinate of point B
- * @param c x coordinate of point A
- * @param d x coordinate of point B
+ * @param c y coordinate of point A
+ * @param d y coordinate of point B
  * @return res1 + res2 result of the manhattan distance calculation
  */
 int calc_distance(int a, int b, int c, int d) {
@@ -274,4 +272,5 @@ int calc_distance(int a, int b, int c, int d) {
 void freedom(int** dynamic_memory_to_free, int size) {
     for (int i = 0; i < size; i++) 
         free(dynamic_memory_to_free[i]);
+    free(dynamic_memory_to_free);
 }

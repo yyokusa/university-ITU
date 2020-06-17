@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h> // EXIT SUCCESS, EXIT_FAILURE
 
-int main() {
+int main()
+{
   int year;
   int initial_year;
   int month;
@@ -18,7 +19,8 @@ int main() {
   initial_year = year; // var year value changes
 
   // IS DATE VALID
-  switch (month) {
+  switch (month)
+  {
   case 1:
     is_valid = ((day <= 31 && day >= 1) ? 1 : 0);
     break;
@@ -61,7 +63,8 @@ int main() {
   } // end switch
 
   // check if date is valid
-  if (!is_valid) {
+  if (!is_valid)
+  {
     // error message
     printf("Invalid date.\n");
     // end with failure code
@@ -76,12 +79,15 @@ int main() {
   // int k;
   // int j;
   // in case of month is January or February
-  if (month == 1 || month == 2) {
+  if (month == 1 || month == 2)
+  {
     month += 12;
     year -= 1;
     century_of_year = year / 100;
     two_digit_year = year % 100;
-  } else {
+  }
+  else
+  {
     century_of_year = year / 100; // centuryOfYear
     two_digit_year = year % 100;  // twoDigitYear
   }
@@ -93,7 +99,8 @@ int main() {
                     7;
 
   // print the week of the day
-  switch (day_of_the_week) {
+  switch (day_of_the_week)
+  {
   case 0:
     printf("It's a Saturday.\n");
     break;
@@ -123,18 +130,22 @@ int main() {
   check_day_of_the_week = day_of_the_week;
   int i;       // loop var also year
   int res = 0; // result
-  for (i = initial_year + 1; i <= end_year; i++) {
+  for (i = initial_year + 1; i <= end_year; i++)
+  {
     int q = day;
     int m = month;
     int j;
     int k;
-    if (m == 1 || m == 2) {
+    if (m == 1 || m == 2)
+    {
       m += 12;
       i -= 1;
       j = i / 100;
       k = i % 100;
       i += 1; //  because of line 136, (year is also loop variable)
-    } else {
+    }
+    else
+    {
       century_of_year = i / 100; // centuryOfYear
       two_digit_year = i % 100;  // twoDigitYear
       j = century_of_year;
@@ -144,7 +155,8 @@ int main() {
     day_of_the_week =
         (q + (13 * (m + 1) / 5) + k + (k / 4) + (j / 4) + 5 * j) % 7;
     // check if same weekday
-    if (check_day_of_the_week == day_of_the_week) {
+    if (check_day_of_the_week == day_of_the_week)
+    {
       ++res;
     }
   }

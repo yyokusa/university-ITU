@@ -7,26 +7,30 @@ typedef struct ClientData
     char lastName[15];
     char firstName[10];
     double balance;
-}ClientData;
+} ClientData;
 void createBlankData();
-void textFile(FILE* fptr);
-void updateRecord(FILE* fptr);
-void newRecord(FILE* fptr);
-void deleteRecord(FILE* fptr);
+void textFile(FILE *fptr);
+void updateRecord(FILE *fptr);
+void newRecord(FILE *fptr);
+void deleteRecord(FILE *fptr);
 unsigned int enterChoice(void);
-void showRecords(FILE * fptr);
-int main() {
-    
+void showRecords(FILE *fptr);
+int main()
+{
+
     // createBlankData() call this function one time to create a credit.dat file
-    FILE* fptr;
+    FILE *fptr;
 
-    unsigned int choice; 
+    unsigned int choice;
 
-    if ((fptr = fopen("credit.dat", "rb+")) == NULL) { // rb+ bak
+    if ((fptr = fopen("credit.dat", "rb+")) == NULL)
+    { // rb+ bak
         puts("Could not open file");
     } //end if
-    else {
-        while ((choice = enterChoice()) != 6) {
+    else
+    {
+        while ((choice = enterChoice()) != 6)
+        {
             switch (choice)
             {
             case 1:
@@ -45,74 +49,85 @@ int main() {
                 showRecords(fptr);
                 break;
             default:
-            puts("Incorrect choice");
+                puts("Incorrect choice");
                 break;
             }
         } //end while
         fclose(fptr);
-    }//end else 
+    } //end else
 
     return 0;
-}//end main
+} //end main
 
-void createBlankData() {
+void createBlankData()
+{
     ClientData blank_client = {0, "", "", 0.0};
-    FILE * fptr;
-    if((fptr = fopen("credit.dat", "wb")) == NULL) {
+    FILE *fptr;
+    if ((fptr = fopen("credit.dat", "wb")) == NULL)
+    {
         puts("could not open file");
         return;
-    } else {
-        for (int  i = 0; i < 100; i++) {
-            fwrite(&blank_client,sizeof(ClientData), 1, fptr);
+    }
+    else
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            fwrite(&blank_client, sizeof(ClientData), 1, fptr);
         }
         fclose(fptr);
     }
 }
 
-unsigned int enterChoice() {
+unsigned int enterChoice()
+{
     unsigned int menu_choice;
     printf("%s", "\nEnter your choice\n"
-        "1 - Store a formatted text file of accounts\n"
-        "   called \"accounts.txt\" for printing\n"
-        "2 - Update an account\n"
-        "3 - Add an account\n"
-        "4 - Delete an account\n"
-        "5 - Show all\n"
-        "6 - End program\n");
+                 "1 - Store a formatted text file of accounts\n"
+                 "   called \"accounts.txt\" for printing\n"
+                 "2 - Update an account\n"
+                 "3 - Add an account\n"
+                 "4 - Delete an account\n"
+                 "5 - Show all\n"
+                 "6 - End program\n");
     scanf("%u", &menu_choice);
     return menu_choice;
 }
-void textFile(FILE* read_ptr) {
+void textFile(FILE *read_ptr)
+{
     FILE *write_ptr;
     int result; // used to read if fread read any bytes
 
     ClientData client = {0, "", "", 0.0};
-    if ((write_ptr = fopen("accounts.txt", "w")) == NULL) {
+    if ((write_ptr = fopen("accounts.txt", "w")) == NULL)
+    {
         puts("Could not open file");
     } //end if
-    else {
+    else
+    {
         rewind(read_ptr);
         //print content in file instead of stdout console
         fprintf(write_ptr, "%-6s%-16s%-11s%-10s\n",
-            "Acct","Last name","First name","Balance");
+                "Acct", "Last name", "First name", "Balance");
         // read all record s until eof
-        while (!feof(read_ptr)) {
+        while (!feof(read_ptr))
+        {
             result = fread(&client, sizeof(ClientData), 1, read_ptr);
             // write single record to text file
-            if (result != 0 && client.acctNum != 0) {
+            if (result != 0 && client.acctNum != 0)
+            {
                 fprintf(write_ptr, "%-6d%-16s%-11s%-10.2lf\n",
-                    client.acctNum, client.lastName, client.firstName, client.balance);
-            }// end if
-        } //end while
+                        client.acctNum, client.lastName, client.firstName, client.balance);
+            } // end if
+        }     //end while
         fclose(write_ptr);
-    }//end else 
+    } //end else
 }
 //OK
-void updateRecord(FILE* fptr) {
+void updateRecord(FILE *fptr)
+{
     ClientData client = {0, "", "", 0.0};
     double transaction_amount = 0.0;
     unsigned int account = 0;
-    
 
     printf("Enter account to update (1 to 100): ");
     scanf("%d", &account);
@@ -120,40 +135,46 @@ void updateRecord(FILE* fptr) {
     fseek(fptr, (account - 1) * sizeof(ClientData), SEEK_SET);
     //read record
     fread(&client, sizeof(ClientData), 1, fptr);
-    if (client.acctNum == 0) {
+    if (client.acctNum == 0)
+    {
         printf("Account %d has no information \n", client.acctNum);
         return;
-    } 
-    else { // update record
+    }
+    else
+    { // update record
         printf("%-6d%-16s%-11s%-10.2lf",
-            client.acctNum, client.lastName, client.firstName, client.balance);
+               client.acctNum, client.lastName, client.firstName, client.balance);
         //request transaction amount
-        printf("%s","Enter charge ( + ) or payment ( - ): ");
+        printf("%s", "Enter charge ( + ) or payment ( - ): ");
         scanf("%lf", &transaction_amount);
         client.balance += transaction_amount;
         printf("%-6d%-16s%-11s%-10.2lf",
-            client.acctNum, client.lastName, client.firstName, client.balance);
+               client.acctNum, client.lastName, client.firstName, client.balance);
         //move fptr to correct record in file
         fseek(fptr, (account - 1) * sizeof(ClientData), SEEK_SET);
         //write updated record over old record in file
         fwrite(&client, sizeof(ClientData), 1, fptr);
     }
 }
-void newRecord(FILE* fptr) {
-    ClientData client = {0, "" , "", 0.0};
+void newRecord(FILE *fptr)
+{
+    ClientData client = {0, "", "", 0.0};
     unsigned int account_num;
 
-    printf("%s","Enter account number"
-        " (1 to 100, 0 to end input)\n? ");
+    printf("%s", "Enter account number"
+                 " (1 to 100, 0 to end input)\n? ");
     scanf("%d", &account_num);
     fseek(fptr, (account_num - 1) * sizeof(ClientData), SEEK_SET);
-    fread(&client, sizeof(ClientData), 1, fptr);    
+    fread(&client, sizeof(ClientData), 1, fptr);
     //user enter info which copied into file
-    if (client.acctNum != 0) {
+    if (client.acctNum != 0)
+    {
         printf("Account %d already have info", client.acctNum);
         return;
-    } else {
-        printf("%s","Enter lastname, firstname, balance\n? ");
+    }
+    else
+    {
+        printf("%s", "Enter lastname, firstname, balance\n? ");
         //set record
         fscanf(stdin, "%14s%9s%lf", client.lastName, client.firstName, &client.balance);
         client.acctNum = account_num;
@@ -163,22 +184,25 @@ void newRecord(FILE* fptr) {
         fwrite(&client, sizeof(ClientData), 1, fptr);
     }
 }
-        
-void deleteRecord(FILE* fptr) {
+
+void deleteRecord(FILE *fptr)
+{
     ClientData client;
     ClientData blank_client = {0, "", "", 0.0};
     unsigned int account_num;
-    printf("%s","account num to delete (1 to 100) ");
+    printf("%s", "account num to delete (1 to 100) ");
     scanf("%d", &account_num);
     // find record
     fseek(fptr, sizeof(ClientData) * (account_num - 1), SEEK_SET);
     //read record
     fread(&client, sizeof(ClientData), 1, fptr);
-    if (client.acctNum == 0) {
+    if (client.acctNum == 0)
+    {
         printf("Account %d does not exist\n", account_num);
         return;
-    } 
-    else {
+    }
+    else
+    {
         // find record
         fseek(fptr, sizeof(ClientData) * (account_num - 1), SEEK_SET);
         //set record
@@ -188,17 +212,16 @@ void deleteRecord(FILE* fptr) {
     }
 }
 
-
-void showRecords(FILE * fptr) {
+void showRecords(FILE *fptr)
+{
     rewind(fptr);
-    ClientData client = {0,"","",0.0};
-    while(!feof(fptr)) {
+    ClientData client = {0, "", "", 0.0};
+    while (!feof(fptr))
+    {
         fread(&client, sizeof(ClientData), 1, fptr);
-        printf("%d %s %s %lf\n", client.acctNum,client.lastName,client.firstName,client.balance);
+        printf("%d %s %s %lf\n", client.acctNum, client.lastName, client.firstName, client.balance);
     }
 }
-
-
 
 /*
 from man fseek:

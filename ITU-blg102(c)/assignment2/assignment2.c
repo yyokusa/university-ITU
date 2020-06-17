@@ -14,20 +14,22 @@ int target = 0;
 int point_value_of_the_throw(int, char);
 int get_rem_after_throw(int, int, char);
 
-int main() {
+int main()
+{
     int current_score = 0;
     int segment = 0;
     char ring;
     printf("Target: ");
-    scanf("%d",&target);
+    scanf("%d", &target);
     current_score = target;
 
-    do{
+    do
+    {
         printf("Throw: ");
         scanf("%d %c", &segment, &ring);
         current_score = get_rem_after_throw(current_score, segment, ring);
         printf("Points: %d\n", current_score);
-    }while (current_score != 0);
+    } while (current_score != 0);
 
     return EXIT_SUCCESS;
 }
@@ -40,31 +42,38 @@ int main() {
  * @param ring is one of the rings of the dart board
  * @return new score as an integer value
  */
-int get_rem_after_throw(int current_score, int segment, char ring) {
+int get_rem_after_throw(int current_score, int segment, char ring)
+{
     int new_score = 0;
     int point_value = 0;
-    
+
     //short circuit eval.
-    if (current_score == target && ring != 'D') {
+    if (current_score == target && ring != 'D')
+    {
         return current_score;
     }
 
     point_value = point_value_of_the_throw(segment, ring);
     new_score = current_score - point_value;
-    
-    if ((new_score == 1) || (new_score < 0)) {
+
+    if ((new_score == 1) || (new_score < 0))
+    {
         new_score += point_value;
         return new_score;
     }
 
-    if(new_score == 0) {
-        if (ring == 'D') {
+    if (new_score == 0)
+    {
+        if (ring == 'D')
+        {
             return 0;
-        } else{
+        }
+        else
+        {
             new_score += point_value;
             return new_score;
         }
-    } 
+    }
     return new_score;
 }
 /** 
@@ -75,9 +84,11 @@ int get_rem_after_throw(int current_score, int segment, char ring) {
  * @param ring is one of the rings of the dart board
  * @return achieved score as an integer value
  */
-int point_value_of_the_throw(int segment,char ring) {
+int point_value_of_the_throw(int segment, char ring)
+{
     int point_value = 0;
-    switch (ring) {
+    switch (ring)
+    {
     case 'S':
         point_value = segment;
         break;

@@ -24,7 +24,7 @@ Instructions *allocate_mem_for_instruction_arr();
 int read_instructions_into_array(FILE *fptr_instructions, Instructions *instructions_arr);
 char **allocate_mem_for_book();
 void read_book_into_array(FILE *alice, char **book);
-void cleaning_the_text_little_bit(char *str);
+void clear_text(char *str);
 void get_sentence(char **lines, Instructions *instructions, int n_instructions, char *sentence);
 char *get_word(char *line, int index, char *word);
 void freedom(char **dynamic_memory_to_free);
@@ -93,7 +93,7 @@ void read_book_into_array(FILE *alice, char **book)
     int i = 0;
     while (fgets(book[i], CHARS, alice) != NULL)
     {                                          //this func puts '\0' at the end of line itself...
-        cleaning_the_text_little_bit(book[i]); // send a line and fix it book[i] is a line from the book[][] array of strings
+        clear_text(book[i]); // send a line and fix it book[i] is a line from the book[][] array of strings
         i++;
     }
 }
@@ -145,7 +145,7 @@ Instructions *allocate_mem_for_instruction_arr()
  * @param str String which represents a line to be evaluated.
  * @return NULL
  */
-void cleaning_the_text_little_bit(char *str)
+void clear_text(char *str)
 {
     for (int i = 0; str[i] != '\0'; i++)
     {

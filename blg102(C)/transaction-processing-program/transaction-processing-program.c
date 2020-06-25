@@ -8,6 +8,7 @@ typedef struct ClientData
     char firstName[10];
     double balance;
 } ClientData;
+
 void createBlankData();
 void textFile(FILE *fptr);
 void updateRecord(FILE *fptr);
@@ -15,6 +16,7 @@ void newRecord(FILE *fptr);
 void deleteRecord(FILE *fptr);
 unsigned int enterChoice(void);
 void showRecords(FILE *fptr);
+
 int main()
 {
 
@@ -63,7 +65,7 @@ void createBlankData()
 {
     ClientData blank_client = {0, "", "", 0.0};
     FILE *fptr;
-    if ((fptr = fopen("credit.dat", "wb")) == NULL)
+    if ((fptr = fopen("credit.dat", "wb")) == NULL) // "wb" --> fread, fwrite
     {
         puts("could not open file");
         return;

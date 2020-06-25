@@ -38,7 +38,7 @@ int main(int argc, char **argv)
         return EXIT_FAILURE;
     }
 
-    char **book = allocate_mem_for_book(); //free this
+    char **book = allocate_mem_for_book();
     FILE *alice = NULL;
     if ((alice = fopen(argv[1], "r")) == NULL)
     {
@@ -53,7 +53,7 @@ int main(int argc, char **argv)
 
     FILE *fptr_instructions = NULL;
     int i = 0;
-    Instructions *instructions_arr = allocate_mem_for_instruction_arr(); //free this
+    Instructions *instructions_arr = allocate_mem_for_instruction_arr();
     if ((fptr_instructions = fopen(argv[2], "r")) == NULL)
     {
         puts("Could not open instructions file");
@@ -65,19 +65,13 @@ int main(int argc, char **argv)
         fclose(fptr_instructions);
     } //end else
 
-    //this will be the final super secret full message
     char sentence[CHARS] = {'\0'};
-
-    // put secret thing inside sentence
     get_sentence(book, instructions_arr, i, sentence);
 
-    // print the final super secret full message
     printf("%s\n", sentence);
 
-    //free dynamically allocated mem
     freedom(book);
     free(instructions_arr);
-
     return EXIT_SUCCESS;
 }
 
@@ -92,7 +86,7 @@ void read_book_into_array(FILE *alice, char **book)
 {
     int i = 0;
     while (fgets(book[i], CHARS, alice) != NULL)
-    {                                          //this func puts '\0' at the end of line itself...
+    {
         clear_text(book[i]); // send a line and fix it book[i] is a line from the book[][] array of strings
         i++;
     }
@@ -241,7 +235,6 @@ void get_sentence(char **book, Instructions *instructions, int n_instructions, c
     int line = -1;
     for (int i = 0; i < n_instructions; i++)
     {
-        //below line initiliazes char array full of '\0' --> not sure check this
         char word[CHARS] = {'\0'};
         line += instructions[i].step;
         strcat(sentence, get_word(book[line], instructions[i].index, word)); //Appending the requested word to the sentence

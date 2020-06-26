@@ -94,6 +94,7 @@ unsigned int enterChoice()
     scanf("%u", &menu_choice);
     return menu_choice;
 }
+
 void textFile(FILE *read_ptr)
 {
     FILE *write_ptr;
@@ -107,10 +108,10 @@ void textFile(FILE *read_ptr)
     else
     {
         rewind(read_ptr);
-        //print content in file instead of stdout console
+        // print content in file instead of stdout
         fprintf(write_ptr, "%-6s%-16s%-11s%-10s\n",
                 "Acct", "Last name", "First name", "Balance");
-        // read all record s until eof
+        // read all records until eof
         while (!feof(read_ptr))
         {
             result = fread(&client, sizeof(ClientData), 1, read_ptr);
@@ -119,12 +120,12 @@ void textFile(FILE *read_ptr)
             {
                 fprintf(write_ptr, "%-6d%-16s%-11s%-10.2lf\n",
                         client.acctNum, client.lastName, client.firstName, client.balance);
-            } // end if
-        }     //end while
+            }
+        }    
         fclose(write_ptr);
-    } //end else
+    }
 }
-//OK
+
 void updateRecord(FILE *fptr)
 {
     ClientData client = {0, "", "", 0.0};
@@ -168,7 +169,7 @@ void newRecord(FILE *fptr)
     scanf("%d", &account_num);
     fseek(fptr, (account_num - 1) * sizeof(ClientData), SEEK_SET);
     fread(&client, sizeof(ClientData), 1, fptr);
-    //user enter info which copied into file
+
     if (client.acctNum != 0)
     {
         printf("Account %d already have info", client.acctNum);

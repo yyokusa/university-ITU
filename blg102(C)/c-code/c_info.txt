@@ -1,0 +1,97 @@
+// What does int argc, char *argv[] mean?
+https://stackoverflow.com/questions/3024197/what-does-int-argc-char-argv-mean/3024202
+
+https://en.cppreference.com/w/c/language/scope
+
+https://en.cppreference.com/w/c/program/EXIT_status     EXIT_SUCCESS, EXIT_FAILURE
+
+https://www.w3schools.in/c-tutorial/typedef/
+
+https://www.geeksforgeeks.org/structures-c/
+
+https://fresh2refresh.com/c-programming/c-passing-struct-to-function/        //important
+
+https://overiq.com/c-programming-101/pointer-to-a-structure-in-c/
+
+************************************************************************************
+
+As Michael pointed out in the comments the strings are terminated by a zero. So in memory the first string will look like this
+
+"123\0"
+
+where \0 is a single char and has the ASCII value 0. Then the above string has size 4.
+
+If you had not this terminating character, how would one know, where the string (or char[] for that matter) ends? Well, indeed one other way is to store the length somewhere. Some languages do that. C doesn't.
+
+************************************************************************************
+						//!!!! *arr = arr[0]
+DYNAMIC MEMORY ALLOCATION			//!!!! *(arr + 1) = arr[1]
+
+https://www.geeksforgeeks.org/dynamic-memory-allocation-in-c-using-malloc-calloc-free-and-realloc/
+
+#include <stdio.h> 
+#include <stdlib.h> 			//malloc
+
+int main() 
+{ 
+
+	// This pointer will hold the 
+	// base address of the block created 
+	int* ptr; 
+	int n, i; 
+
+	// Get the number of elements for the array 
+	n = 5; 
+	printf("Enter number of elements: %d\n", n); 
+
+	// Dynamically allocate memory using malloc() 
+	ptr = (int*)malloc(n * sizeof(int)); 
+
+	// Check if the memory has been successfully 
+	// allocated by malloc or not 
+	if (ptr == NULL) { 
+		printf("Memory not allocated.\n"); 
+		exit(0); 
+	} 
+	else { 
+
+		// Memory has been successfully allocated 
+		printf("Memory successfully allocated using malloc.\n"); 
+
+		// Get the elements of the array 		
+		for (i = 0; i < n; ++i) { 		//!!!! *arr = arr[0]
+			ptr[i] = i + 1; 	       //!!!! *(arr + 1) = arr[1]
+		} 
+
+		// Print the elements of the array 
+		printf("The elements of the array are: "); 
+		for (i = 0; i < n; ++i) { 
+			printf("%d, ", ptr[i]); 	
+		} 
+	} 
+
+	return 0; 
+} 
+
+*****************************************************************************************
+https://stackoverflow.com/questions/31363683/using-realloc-to-increase-the-size-of-an-array
+*****************************************************************************************
+Sscanf()
+Fgets()
+fputs()
+puts()
+gets() //The gets() function is risky to use since it doesn't perform any array bound checking and keep reading the characters until the new line (enter) is encountered. It suffers from buffer overflow, which can be avoided by using fgets(). The fgets() makes sure that not more than the maximum limit of characters are read. Consider the following example.
+
+*****************************************************************************************
+Dynamic Memory Allocation
+Stack vs Heap
+Variables stored in the stack
+Memory allocated explicitly by user from the heap
+--Heapte mimariye bağlı olarak mesela ne kadar byte kullandın, ayırılan byte ör:4 byte ve 4 byte to indicate how much memory remaining
+Once you free a variable you can not guarantee the access to the content, you can not access or depend on that variable no more, once you freed a space you have no control over it!!!!!!
+FREEING MEMORY SPACE WE ALLOCATED IS ESSENTIAL!!!!!!!!!! Or memory leak :(
+*****************************************************************************************
+
+*****************************************************************************************
+*****************************************************************************************
+*****************************************************************************************

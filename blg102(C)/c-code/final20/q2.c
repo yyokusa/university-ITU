@@ -17,13 +17,12 @@ int get_purchases(Movie *movies, char *movie_title);
 int add_movie(Movie *movies, char *movie_title, double movie_rating);
 int compute_rating(Movie *movies, char *movie_title, double movie_rating);
 
-
 int main()
 {
-	//there are initially two elements in the array. 
-    Movie movies[N_MOVIES] = { {"Spartacus", 9, 4.0}, {"Ben Hur", 5, 1.8}};
-    
-	char movie_title[MAX_TITLE];
+    //there are initially two elements in the array.
+    Movie movies[N_MOVIES] = {{"Spartacus", 9, 4.0}, {"Ben Hur", 5, 1.8}};
+
+    char movie_title[MAX_TITLE];
     int movie_rating, menu_selection, result;
     char input;
 
@@ -31,49 +30,62 @@ int main()
         movies[i].purchase = -1;
 
     printf("Welcome to the movie database.\n");
-    do {
+    do
+    {
         printf("Enter your request (1 for getting the purchases of a movie, 2 for updating the rating of a movie, 3 for exit):");
         scanf("%d", &menu_selection);
 
-        if (menu_selection == 1) {
+        if (menu_selection == 1)
+        {
             printf("Enter the movie title:");
             scanf(" %[^\n]s", movie_title);
 
             result = get_purchases(movies, movie_title);
-            if (result != -1) {
+            if (result != -1)
+            {
                 printf("The movie %s has been purchased %d times.\n", movie_title, result);
-            } else {
+            }
+            else
+            {
                 printf("The movie %s could not be found in the database.\n", movie_title);
             }
         }
 
-        else if (menu_selection == 2) {
+        else if (menu_selection == 2)
+        {
             printf("Enter the movie title:");
             scanf(" %[^\n]s", movie_title);
 
             printf("Enter the movie rating (out of 5):");
             scanf("%d", &movie_rating);
 
-            while (movie_rating < 0 || movie_rating > 5) {
+            while (movie_rating < 0 || movie_rating > 5)
+            {
                 printf("Enter the movie rating (out of 5):");
                 scanf("%d", &movie_rating);
             }
 
             result = compute_rating(movies, movie_title, movie_rating);
-            if (result == 0) {
+            if (result == 0)
+            {
                 printf("The movie %s could not be found in the database. Would you like to add this movie (Y/N):", movie_title);
                 scanf(" %c", &input);
 
-                while (input != 'Y' && input != 'N') {
+                while (input != 'Y' && input != 'N')
+                {
                     printf("Please enter a valid input (Y/N):");
                     scanf(" %c", &input);
                 }
 
-                if (input == 'Y') {
+                if (input == 'Y')
+                {
                     result = add_movie(movies, movie_title, movie_rating);
-                    if (result == 1) {
+                    if (result == 1)
+                    {
                         printf("The movie %s is added to the database with a rating of %d.\n", movie_title, movie_rating);
-                    } else {
+                    }
+                    else
+                    {
                         printf("The movie %s could not be added to the database.\n", movie_title);
                     }
                 }
@@ -83,7 +95,6 @@ int main()
 
     return EXIT_SUCCESS;
 }
-
 
 int get_purchases(Movie *movies, char *movie_title)
 {
@@ -96,7 +107,6 @@ int get_purchases(Movie *movies, char *movie_title)
     }
     return -1;
 }
-
 
 int compute_rating(Movie *movies, char *movie_title, double movie_rating)
 {
@@ -121,7 +131,7 @@ int compute_rating(Movie *movies, char *movie_title, double movie_rating)
             // printf("The rating is updated to %lf.\r", (*(movies + i)).rating);
             return (*(movies + i)).rating;
         }
-    }    
+    }
     return 0;
 }
 

@@ -1,0 +1,433 @@
+******************************************************************************************
+Declare variables inside blocks of for if or other blocks as much as you can
+
+******************************************************************************************
+Efficient way to determine number of digits in an integer
+
+int numDigits(T number)
+{
+    int digits = 0;
+    if (number < 0) digits = 1; // remove this line if '-' counts as a digit
+    while (number) {
+        number /= 10;
+        digits++;
+    }
+    return digits;
+}
+
+unsigned GetNumberOfDigits (unsigned i)
+{
+    return i > 0 ? (int) log10 ((double) i) + 1 : 1;
+}
+
+************************************************************************************************************************************
+// Recursive C program to count number of 
+// digits in a number 
+#include <stdio.h> 
+  
+int countDigit(long long n) 
+{ 
+    if (n == 0) 
+        return 0; 
+    return 1 + countDigit(n / 10); 
+} 
+  
+// Driver code 
+int main(void) 
+{ 
+    long long n = 345289467; 
+    printf("Number of digits : %d", 
+           countDigit(n)); 
+    return 0; 
+} 
+
+************************************************************************************************************************************
+// Log based C program to count number of 
+// digits in a number 
+#include <math.h> 
+#include <stdio.h> 
+  
+int countDigit(long long n) 
+{ 
+    return floor(log10(n) + 1); 
+} 
+  
+// Driver code 
+int main(void) 
+{ 
+    long long n = 345289467; 
+    printf("Number of digits : %d", 
+           countDigit(n)); 
+    return 0; 
+} 
+
+************************************************************************************************************************************
+math.h
+
+The C library function double floor(double x) returns the largest integer value less than or equal to x.
+double floor(double x)
+The C library function double sqrt(double x) returns the square root of x.
+double sqrt(double x)
+
+The C library function double modf(double x, double *integer) returns the fraction component (part after the decimal), and sets integer to the integer component.
+double modf(double x, double *integer)
+#include<stdio.h>
+#include<math.h>
+
+int main () {
+   double x, fractpart, intpart;
+
+   x = 8.123456;
+   fractpart = modf(x, &intpart);
+
+   printf("Integral part = %lf\n", intpart);
+   printf("Fraction Part = %lf \n", fractpart);
+   
+   return(0);
+}
+************************************************************************************************************************************
+mt 1 qsn 6
+calc ln (1 + x)
+
+double my_pow(double, double);
+double calc_ln_plus_one(double x, double n);
+int main()
+{
+    double result;
+	result = calc_ln_plus_one(0.5,1000);
+	printf("%lf", result);
+	return 0;
+}
+
+double calc_ln_plus_one(double x, double n) {
+	double result = 0.0;
+	int sign = 1;
+	for (int i = 0; i < n; ++i) {	    
+        result += sign * my_pow(x, (double)(i + 1)) / (i + 1);    
+	    sign *= -1;
+	}
+	return result;
+}
+
+double my_pow(double num, double pow) {
+	double result = 1;
+	for (int i = 0; i < pow; ++i) {
+		result *= num;
+	}
+	return result;
+}
+
+
+
+*************************************************************************************
+https://stackoverflow.com/questions/26820871/c-program-which-calculates-ln-for-a-given-variable-x-without-using-any-ready-f
+calc lnx stack overflow
+
+double ln(double x) {
+  // validate 0 < x < 2
+  double threshold = 1e-5;  // set this to whatever threshold you want
+  double base = x-1;        // Base of the numerator; exponent will be explicit
+  int den = 1;              // Denominator of the nth term
+  int sign = 1;             // Used to swap the sign of each term
+  double term = base;       // First term
+  double prev = 0;          // Previous sum
+  double result = term;     // Kick it off
+
+  while (fabs(prev - result) > threshold) {
+      den++;
+      sign *=- 1;
+      term *= base;
+      prev = result;
+      result += sign * term / den;
+  }
+
+  return result;
+}
+
+
+*************************************************************************************
+Functions Slayt
+
+-Code reuse
+-Stepwise refinement --> to solve a difficult task, break it down into simpler tasks.
+
+–You need to design, code, and test the function.–The function needs to be documented.–You need to spend some effort to make the functionreusable rather than tied to a specific context.
+
+
+When you design a complex set of functions, it is a goodidea to carry out a manual walkthrough before entrustingyour program to the computer.This process is called tracing your code.
+
+
+Stubs•You can temporarily replace the body of function yet to beimplemented with a stub.•A stub is a function that returns a simple value that issufficient for testing another function.•It might also have something written on the screen to helpyou see the order of execution.•Or, do both of these things.
+
+
+StubsHere are examples of stub functions.void print_digit(int digit){printf("mumble");}void print_tens(int number){printf("mumblety");}
+
+
+Now that you have tested print_num, you would“unstubify” another stub function, then another...
+
+
+
+Variable ScopeA variable or parameter that is defined within a functionis visible from the point at which it is defined untilthe end of the block named by the function.This area is called the scope of the variable.
+
+
+Variable ScopeThe scope of a variable is the part of theprogram in which it is visible.
+
+
+Because scopes do not overlap,a name in one scope cannotconflict with any name in another scope.
+
+A name in one scope is “invisible”in another scope
+
+
+Variable ScopeNames inside a block are called local to that block.A function names a block.Recall that variables and parameters do not exist afterthe function is over—because they are local to thatblock.But there are other blocks.
+
+
+
+Variable ScopeIt is not legal to define two variables or parameterswith the same name in the same scope.
+
+
+Global VariablesGlobal variables are defined outside any block.They are visible to every function defined after them.
+
+Programs with global variables are difficult to maintain andextend because you can no longer view each function asa “black box” that simply receives parameter values andreturns a result or does something.
+
+You should avoid globalvariables in your programs!
+
+************************************************
+#include <time.h>
+srand(time(NULL));
+enum Status {CONTINUE, WON, LOST};
+
+************************************************
+
+
+
+
+// C program to generate random numbers 
+#include <stdio.h> 
+#include <stdlib.h> 
+#include<time.h> 
+  
+// Driver program 
+int main(void) 
+{ 
+    // This program will create different sequence of  
+    // random numbers on every program run  
+  
+    // Use current time as seed for random generator 
+    srand(time(0)); 
+  
+    for(int i = 0; i<5; i++) 
+        printf(" %d ", rand()); 
+  
+    return 0; 
+} 
+*********************************************************************
+rand() -> 0 - RAND_MAX arası
+
+How srand() and rand() are related to each other?
+
+srand() sets the seed which is used by rand to generate “random” numbers. If you don’t call srand before your first call to rand, it’s as if you had called srand(1) to set the seed to one.
+In short, srand() — Set Seed for rand() Function.
+
+
+
+************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+Or use modulo instead 
+
+--This class' assistants worst
+To get a random number btw 0 and 1:
+#include <limits.h> // RAND_MAX
+rand() / RAND_MAX (btw 0 - 1)
+5 * (rand() / RAND_MAX) // scale it with what you want
+
+************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+
+quantity of elements – the “size” of the array,must be a constant
+
+double values[] = { 32, 54, 67.5, 29, 35, 80, 115, 44.5, 100, 65 };
+
+
+int arr[10] = {0}; // remaining values are set to zero
+
+
+******************************************************************************************
+Accessing an Array ElementAn array element can be used like any variable.To access an array element, you use the notation:values[i]where i is the index.
+
+
+******************************************************************************************
+
+******************************************************************************************For example, we may decide for a particular problemthat there are usually ten or 11 values, but never more than 100.We would set the capacity with a const:const int CAPACITY = 100;double values[CAPACITY];
+************************************************************
+squares = lucky_numbers;…and wrong!
+
+You cannot assign arrays!
+************************************************************
+Common Algorithms – Copyingint squares[5] = { 0, 1, 4, 9, 16 };int lucky_numbers[5];for (int i = 0; i < 5; i++) {	lucky_numbers[i] = squares[i];}
+
+************************************************************
+Common Algorithms – Sum and Average ValueYou have already seen the algorithmfor computing the sum and average of set of data.The algorithm is the same when the data is stored in an array.double total = 0;for (int i = 0; i < size of values; i++) {	total = total + values[i];}The average is just arithmetic:double average = total / size of values;
+
+************************************************************
+Common Algorithms – Maximum and MinimumTo compute the largest value in an array, keep a variablethat stores the largest element that you have encountered,and update it when you find a larger one.double largest = values[0];for (int i = 1; i < size of values; i++) {	if (values[i] > largest) {		largest = values[i];	}}
+
+************************************************************
+Common Algorithms – Maximum and MinimumFor the minimum, we just reverse the comparison.double smallest = values[0];for (int i = 1; i < size of values; i++) {if (values[i] < smallest) {smallest = values[i];}}These algorithms require that the arraycontain at least one element.
+
+************************************************************
+Common Algorithms – Linear SearchFind the position of a certain value, say 100, in an array:int pos = 0;bool found = false;while (pos < size of values && !found) {if (values[pos] == 100) {found = true;} else {pos++;}} Don’t get these testsin the wrong order!
+
+************************************************************
+Common Algorithms – Removing an Element, UnorderedSuppose you want to remove the element at index i.If the elements in the array are not in any particular order,that task is easy to accomplish.Simply overwrite the element to be removed with the lastelement of the array, then remove the value that wascopied by shrinking the size of the array.
+
+Common Algorithms – Removing an Element, Unorderedvalues[pos] = values[curre nt_size - 1];current_size--;
+
+************************************************************
+Common Algorithms – Removing an Element, OrderedThe situation is more complexif the order of the elements matters.Then you must move all elements following the element tobe removed “down” (to a lower index), and then removethe last element by shrinking the size.for (int i = pos + 1; i < current_size; i++) {values[i - 1] = values[i];}current_size--;
+
+************************************************************
+Common Algorithms – Inserting an Element Orderedif (current_size < CAPACITY) {current_size++;for (int i = current_size - 1; i > pos; i--) {values[i] = values[i - 1];}values[pos] = new_element;}
+
+************************************************************
+Common Algorithms – Swapping Elementsdouble temp = values[i];values[i] = values[j];values[j] = temp;
+
+Common Algorithms – Reading InputIf the know how many input values the user will supply,you can store them directly into the array:double values[NUMBER_OF_INPUTS];for (i = 0; i < NUMBER_OF_INPUTS; i++) {printf("%lf", &values[i]);}
+
+************************************************************
+Common Algorithms – Reading InputWhen there will be an arbitrary number of inputs,things get more complicated.Add values to the end of the array until all inputs have been made.Again, the companion variable will have the number of inputs.double values[CAPACITY];int current_size = 0;double input;scanf("%lf", &input);while (input > 0) {if (current_size < CAPACITY) {values[current_size] = input;current_size++;}scanf("%lf", &input);}
+************************************************************
+Arrays as Parameters in FunctionsRecall that when we work with arrayswe use a companion variable.The same concept applies whenusing arrays as parameters:You must pass the size to the functionso it will know how many elements to work with.
+************************************************************
+Here is the sum function with an array parameter:Notice that to pass one array, it takes two parameters.double sum(double data[], int size){double total = 0;for (int i = 0; i < size; i++) {total = total + data[i];}return total;}
+************************************************************
+Arrays as Parameters in FunctionsWhen you call the function,supply both the name of the array and the size:double NUMBER_OF_SCORES = 10;double scores[NUMBER_OF_SCORES] = { 32, 54, 67.5, 29, 34.5, 80, 115, 44.5, 100, 65 };double total_score = sum(scores, NUMBER_OF_SCORES);
+
+************************************************************
+You can pass an array into a function but you cannot return an array.
+
+************************************************************
+Arrays as Parameters in FunctionsIf you cannot return an array, how can the caller get the data?
+
+Arrays as Parameters in FunctionsThe caller must provide an array to be used:void squares(int n, int result[]){for (int i = 0; i < n; i++) {result[i] = i * i;}}
+************************************************************
+Arrays as Parameters in FunctionsA function can change the size of an array.It should let the caller know of any changeby returning the new size.int read_inputs(double inputs[], int capacity){int current_size = 0;double input;scanf("%lf", &input);while (input > 0) {if (current_size < capacity) {inputs[current_size] = input;current_size++;}scanf("%lf", &input);}return current_size;}
+************************************************************
+Arrays as Parameters in FunctionsThe following program uses the preceding functions to readvalues from standard input, double them, and print the result.• The read_inputs function fills an array with the input values.It returns the number of elements that were read.• The multiply function modifies the contents of the array thatit receives, demonstrating that arrays can be changed insidethe function to which they are passed.• The print function does not modify the contents of the arraythat it receives.
+
+************************************************************
+Two-Dimensional Arrays
+
+An arrangement consisting of tabular data:rows and columns of values is called:a two-dimensional array, or a matrix.
+
+************************************************************
+Defining Two-Dimensional Arrays
+
+C uses an array with two subscripts to store a two-dimensional array.
+const int COUNTRIES = 7;const int MEDALS = 3;int counts[COUNTRIES][MEDALS];
+
+An array with 7 rows and 3 columnsis suitable for storing our medal count data.
+
+
+************************************************************
+Defining Two-Dimensional Arrays – Unchangeable Size
+
+Just as with one-dimensional arrays, you cannot change the size ofa two-dimensional array once it has been defined.
+
+
+But you can initialize a 2-D array:int counts[COUNTRIES][MEDALS] ={{ 1, 0, 1 },{ 1, 1, 0 },{ 0, 0, 1 },{ 1, 0, 0 },{ 0, 1, 1 },{ 0, 1, 1 },{ 1, 1, 0 }};
+************************************************************
+Two-Dimensional Array Parameters
+
+When passing a two-dimensional array to a function,you must specify the number of columnsas a constant when you write the parameter type.table[][COLUMNS]
+************************************************************
+This function computes the total of a given row.const int COLUMNS = 3;int row_total(int table[][COLUMNS], int row){	int total = 0;	for (int j = 0; j < COLUMNS; j++) {		total = total + table[row][j];	}	return total;}
+
+************************************************************
+int row_total(int table[][COLUMNS], int row)In this function, to find the element table[row][j]the compiler generates codeby computing the offset(row * COLUMNS) + j
+
+Leaving out the columns value is a very common error.int row_total(int table[][], int row)...The compiler doesn’t know how “long” each row is!
+************************************************************
+Putting a value for the rows is not an error.int row_total(int table[17][COLUMNS], int row)...The compiler just ignores whatever you place there.
+************************************************************
+
+The size of an array cannot be changed after it is created.You have to get the size right – before you define an array.The compiler has to know the size to build it.and a function must be told about the numberelements and possibly the capacity.It cannot hold more than it’s initial capacity.
+
+************************************************************
+
+When passing a two-dimensional array to a function,you must specify the number of columnsas a ***************constant******************* when you write the parameter type.table[][COLUMNS]
+************************************************************
+POINTERS I
+
+
+
+************************************************************
+
+C string functions
+
+-strlen(s)
+-strcpy(t, s) copies characters from s into t
+-strncpy(t, s, n) copies at most n characters from s into t
+-strcat(t, s) Appends the characters from s after the end of the characters in t
+-strncat(t, s, n) Appends at most n characters from s after the end of the characters in t
+-strcmp(s, t) Returns 0 if s and t have the same contents, a negative if s comes before t in lexicographic order, a positive integer otherwise
+
+************************************************************
+1. Every call to malloc must be matchedby exactly one call to free.2. Use free to delete arrays.And always assign NULL to the pointer after that.3. Don’t access a memory blockafter it has been deleted.If you don’t follow these rules, your program cancrash or run unpredictably.
+
+************************************************************
+DANGLINGDangling pointers are when you use a pointer thathas already been deleted or was never initialized.
+
+The value in an uninitialized ordeleted pointer might point somewherein the program you haveno right to be accessing.You can create real damage bywriting to the location to which it points.Even just reading from that locationcan crash your program.
+
+
+
+Always initialize pointer variables.• If you can’t initialize them with the return valueof new or the & operator, then set them to NULL.• Never use a pointer that has been deleted.
+************************************************************
+LEAKSA memory leak is when use alolocate dynamicmemory but you fail to free it when you are done.
+
+
+Remember Rule #1.1. Every call to malloc must be matchedby exactly one call to free.And after freeing, set it to NULL sothat it can be tested for danger later.
+
+int* values = malloc(n * sizeof(int));// Process valuesfree(values);values = NULL;...if (values == NULL) ...
+
+
+************************************************************
+
+
+************************************************************
+
+
+
+************************************************************
+
+
+************************************************************
+
+
+************************************************************
+
+
+************************************************************
+
+
+************************************************************
+
+
+************************************************************
+
+
+************************************************************
+
+
+
+************************************************************
+
+
+************************************************************
+
+
+************************************************************
+
+
+************************************************************
+
+
+************************************************************

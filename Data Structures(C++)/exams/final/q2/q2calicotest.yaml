@@ -1,0 +1,21 @@
+- _define:
+    vars:
+    prompt:
+
+- init:
+    run: rm -f q2solution
+    blocker: true
+
+- compile_and_link_tolerated:
+    run: g++ -std=c++11 q2.cpp -o q2solution  # timeout: 8
+    bloker: true
+
+- check_counter_case1:
+    run: ./q2solution
+    blocker: true
+    script:
+        - expect: "3 15 18 25 72 88 95 100 150\\s+####\\s+1 3 16 17 20 34\\s+####\\s+####\\s+####\\s+.*1 3 15 16 17 18 20 25 34 72 88 95 100 150.*" # timeout: 8
+        - send: "enter"
+        - expect: _EOF_
+    exit: 0
+

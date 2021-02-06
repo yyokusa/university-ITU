@@ -1,0 +1,111 @@
+- _define:
+    vars:
+    prompt:
+
+- init:
+    run: rm -f q3solution
+    blocker: true
+
+- compile_and_link_as_tolerated:
+    run: g++ -std=c++11 q3.cpp -o q3solution  # timeout: 8
+    bloker: true
+
+- check_counter_case1:
+    run: ./q3solution
+    blocker: true
+    script:
+        - expect: ".*Enter the input:\\s+" # timeout: 8
+        - send: "0149653498"
+        - expect: "TRUE" #timeout: 8
+        - expect: _EOF_
+    exit: 0
+    
+- check_counter_case2:
+    run: ./q3solution
+    blocker: true
+    script:
+        - expect: ".*Enter the input:\\s+" # timeout: 8
+        - send: "0165993498"
+        - expect: "FALSE" #timeout: 8
+        - expect: _EOF_
+    exit: 0  
+
+- check_counter_case3:
+    run: ./q3solution
+    blocker: true
+    script:
+        - expect: ".*Enter the input:\\s+" # timeout: 8
+        - send: "0000055555"
+        - expect: "TRUE" #timeout: 8
+        - expect: _EOF_
+    exit: 0  
+    
+- check_counter_case4:
+    run: ./q3solution
+    blocker: true
+    script:
+        - expect: ".*Enter the input:\\s+" # timeout: 8
+        - send: "0565993498"
+        - expect: "FALSE" #timeout: 8
+        - expect: _EOF_
+    exit: 0  
+    
+- check_counter_case5:
+    run: ./q3solution
+    blocker: true
+    script:
+        - expect: ".*Enter the input:\\s+" # timeout: 8
+        - send: "0434989538"
+        - expect: "TRUE" #timeout: 8
+        - expect: _EOF_
+    exit: 0  
+    
+- check_counter_case6:
+    run: ./q3solution
+    blocker: true
+    script:
+        - expect: ".*Enter the input:\\s+" # timeout: 8
+        - send: "0434989598"
+        - expect: "FALSE" #timeout: 8
+        - expect: _EOF_
+    exit: 0  
+    
+- check_counter_case7:
+    run: ./q3solution
+    blocker: true
+    script:
+        - expect: ".*Enter the input:\\s+" # timeout: 8
+        - send: "2167440599"
+        - expect: "TRUE" #timeout: 8
+        - expect: _EOF_
+    exit: 0  
+    
+- check_counter_case8:
+    run: ./q3solution
+    blocker: true
+    script:
+        - expect: ".*Enter the input:\\s+" # timeout: 8
+        - send: "9165993498"
+        - expect: "FALSE" #timeout: 8
+        - expect: _EOF_
+    exit: 0  
+    
+- check_counter_case9:
+    run: ./q3solution
+    blocker: true
+    script:
+        - expect: ".*Enter the input:\\s+" # timeout: 8
+        - send: "3165393498"
+        - expect: "FALSE" #timeout: 8
+        - expect: _EOF_
+    exit: 0  
+
+- check_counter_case10:
+    run: ./q3solution
+    blocker: true
+    script:
+        - expect: ".*Enter the input:\\s+" # timeout: 8
+        - send: "4169349805"
+        - expect: "TRUE" #timeout: 8
+        - expect: _EOF_
+    exit: 0  

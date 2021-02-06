@@ -1,0 +1,1 @@
+char * question2answer(char *);

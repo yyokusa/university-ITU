@@ -1,0 +1,78 @@
+// Most file operations kind of same with C language
+
+<cstdio>  C++
+<stdio.h> C
+
+void File::add(Phone_Record *nrptr){
+	/*
+	int
+    fseek(FILE *stream, long offset, int whence);
+
+	The fseek() function sets the file position indicator for the stream
+	pointed to by stream.  The new position, measured in bytes, is obtained
+	by adding offset bytes to the position specified by whence.  If whence is
+	set to SEEK_SET, SEEK_CUR, or SEEK_END, the offset is relative to the
+	start of the file, the current position indicator, or end-of-file,
+	respectively.
+	*/
+	fseek(phonebook, 0, SEEK_END); // sets the file pos to EOF
+	fwrite(nrptr, sizeof(Phone_Record), 1, phonebook);
+}
+
+void File::create(){	
+	filename="phonebook.txt";
+	phonebook = fopen( filename, "r+" );
+	if(!phonebook){ // if the file does not exist yet
+		if(!(phonebook = fopen( filename, "w+" ))){ // create file (using 'w')
+			cerr << "Cannot open file" << endl;
+			exit(1); // EXIT_FAILURE
+		}
+	}
+}
+
+****************************************************************************************
+// about input buffer 
+
+void add_record(){
+	Phone_Record newrecord;	
+	cout << "Please enter contact information you want to add" << endl;
+	cout << "Name : " ;	
+	// https://www.tutorialspoint.com/what-is-the-use-of-cin-ignore-in-cplusplus
+	// #include<ios> //used to get stream size
+	// #include<limits> //used to get numeric limits
+	// cin.ignore(numeric_limits<streamsize>::max(), '\n'); //clear buffer before taking newline
+	cin.ignore(1000, '\n');
+	cin.getline(newrecord.name,NAME_LENGTH);
+	cout << "Phone number :";
+	cin >> setw(PHONENUM_LENGTH) >> newrecord.phonenum;
+	book.add(&newrecord);
+	cout << "Record added" << endl;
+	getchar();
+};
+
+
+// <iomanip>
+// Set field width
+// Sets the field width to be used on output operations.
+
+
+
+// THIS ONE SEEMS LIKE A COMMON PATTERN to avoid bugs on input buffer
+cin.ignore(1000, '\n');
+cin.getline(name,NAME_LENGTH);	
+
+
+
+******************************************
+WHY USING FEOF IS WRONG ?
+https://stackoverflow.com/questions/5431941/why-is-while-feof-file-always-wrong
+
+
+******************************************
+
+There was an anonymous struct post on S.O. for using multivariable in for loop. It is standard C++ feature and looks good.
+
+******************************************
+
+
+

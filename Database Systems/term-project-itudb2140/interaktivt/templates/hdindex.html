@@ -1,0 +1,50 @@
+{% extends "layout.html" %} {% block title %}GDI - Countries{% endblock %} {%
+block content %}
+<h1 class="title">Countries Human Development Indexes</h1>
+<table class="table table-primary table-hover">
+  <thead>
+    <tr>
+      <a
+        href="{{ url_for('main.countries') }}"
+        style="float: left"
+        class="btn btn-primary"
+        ><span>&#8592; Countries HDI</span>
+      </a>
+    </tr>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Country Name</th>
+      <th scope="col">HDI Rank</th>
+      <th scope="col">Human Development Index (HDI)</th>
+      <th scope="col">Life Expectancy at Birth</th>
+      <th scope="col">Expected Years of Education</th>
+      <th scope="col">Mean Years of Education</th>
+      <th scope="col">Gross National Income (GNI) per Capita</th>
+      <th scope="col">GNI per Capita Rank Minus HDI Rank</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for country_index in all_country_indexes %}
+    <tr class="table-success">
+      <th scope="row">{{loop.index}}</th>
+      <td>{{ country_index.name }}</td>
+      <td>{{ country_index.hdi_rank }}</td>
+      <td>{{ country_index.hdi }}</td>
+      <td>{{ country_index.life }}</td>
+      <td>{{ country_index.education_e }}</td>
+      <td>{{ country_index.education_m }}</td>
+      <td>{{ country_index.gnhd }}</td>
+      <td>{{ country_index.gni }}</td>
+      <td>
+        <a
+          href="{{ url_for('main.country_historical_hdindex', country_name=country_index.name) }}"
+          style="float: left"
+          class="btn btn-primary"
+          ><span>&#8594;</span>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

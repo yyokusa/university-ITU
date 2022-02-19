@@ -1,0 +1,44 @@
+{% extends "layout.html" %} {% block title %}GDI - Countries{% endblock %} {%
+block content %}
+<h1 class="title">Countries Human Development Indexes</h1>
+<table class="table table-primary table-hover">
+  <thead>
+    <tr>
+      <a
+        href="{{ url_for('main.countries_hdindex') }}"
+        style="float: left"
+        class="btn btn-primary"
+        ><span>&#8594; Countries Detailed Information</span>
+      </a>
+    </tr>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Country</th>
+      <th scope="col">HDI Rank</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for country in countries %}
+    <tr class="table-success">
+      <th scope="row">{{loop.index}}</th>
+      <td>{{ country.name }}</td>
+      <td>{{ country.hdi_rank }}</td>
+      <td>
+        <a
+          href="{{ url_for('main.country_historical_hdindex', country_name=country.name) }}"
+          style="float: left"
+          class="btn btn-primary"
+          ><span>&#8594;</span>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<div style="text-align: center">
+  <h3>Add your imaginary country!</h3>
+  <div id="add_country_form"></div>
+</div>
+<script type="text/babel" src="./static/js/index.js"></script>
+{% endblock %}

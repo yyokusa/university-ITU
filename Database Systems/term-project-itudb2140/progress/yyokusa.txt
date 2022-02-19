@@ -1,0 +1,100 @@
+Weekly Progress
+
+24 October Sunday - Created Github Organization, repository, and progress folder.
+
+
+21 November Sunday - Following https://web.itu.edu.tr/uyar/fad completed '1. Basics' part.
+
+
+22 November Monday - Following https://web.itu.edu.tr/uyar/fad completed '2. Application Structure' part.
+    - Seperate views and server
+    - Flask config file
+    - Layout template
+    - Bulma CSS Framework
+
+
+28 November Sunday
+    - Connected postgresql database
+    - Created and used dummy "user" table for login implementations
+    - Implemented login, signup functionalities
+    - Authorization
+    - Session
+
+
+4 December Saturday
+    - Changed PostgreSQL "user" table 'created', and 'id' properties to auto generated.
+    - Modified repository and model code for above update. (Removed python timedate func calls etc.)
+
+
+8 December
+    - Create Country model
+    - Create a file for Storing sql queries (Table creation, CRUD)
+    - Add Update user info sql query to UserRepository file
+    - Add Update user info functionality to controller
+    - Add Update user tab for navbar
+    - Test update user info functionality
+
+
+11 December
+    - Create all MAIN and EXTRA table and add queries to db.sql file
+	- Country table for storing rank and country name
+	- Historical index table for storing statistics of different years
+	- GDI table for storing 2014 GDI data with various properties
+    - Finalize User model by implementing user deletion operation and necessary static files
+
+
+17 December
+    - Clean all application using Pandas (Handle ALL missing data with default values such as -1)
+    - Create new models HDI and Historical for new tables
+    - Fill all CSV data to DATABASE using python scripts in itudb2140/db_csv/database_insert.csv
+	- HDI table for 2014 data (latest and most detailed data for current HDI dataset)
+	- Historical index table for 1990, 2000, 2010, 2011, 2012, 2013 years (only HDI numbers data)
+    - Change/modify DB tables in a way to comply with requirements in class project EXCEL file
+
+
+18 December
+    - Create a blueprint for CRUD operations on Country, HDI and Historical Data tables
+    - Create a endpoints file for some CRUD operations (ADD/DELETE Country, others will follow)
+    - Implement all CRUD operations for all above mentioned tables on corresponding REPOSITORY files
+	- Added necessary template code using crud.html file (using Jinja template language)
+    - Add new countries endpoint for listing country and HDI rank information from DB table
+	- Added necessary template code using countries.html file (using Jinja template language)
+    - !!!MOST IMPORTANT/BASIC functionalities for the project evaluation file is completed!!!
+
+
+19 December
+    - Implemented necessary models to display detailed join operations results for users.
+	- Detailed HDI model (displaying life expectancy, education, etc.)
+    - Create all countries detailed HDI Information, historical data, and countries+RANKS HTML templates
+    - Implement necessary DB fetchall methods in Repository in order to fetch necessary model data
+    - Add new routes to main route blueprint, write sensible route parameters for clearer URLs
+    - Add bootstrap for beautiful list and tables
+    - !!!!!!! Add some SS from application to google drive: https://drive.google.com/drive/folders/11UZ3O5IR_aBbvXb4_uCUFcw6OmeVHwY1?usp=sharing
+
+
+25 December
+    - Implemented a form using ReactJS Javascript framework and Babel in order to add new country
+	- Making an api call using JS XMLHttpRequest to localhost server
+	- Adding new country to the database through alternative JS api call
+    - Create all countries detailed HDI Information, historical data, and countries+RANKS HTML templates
+    - Generate necessary JSX code to display form HTML using Javascript React
+    - Mostly practicing React and Javascript framework to use as a proof of concept in this project
+
+02 January
+    - Add navigation links between pages.
+
+08 January
+    - Implement all crud operations
+	- Database + Backend logic + HTML
+
+09 January
+    - Reformat
+    - Finalize project
+
+
+
+
+
+
+
+

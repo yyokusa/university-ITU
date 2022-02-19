@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-danger">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+        {% endwith %}
+        <h1>Countries Operations</h1>
+        {# add country#}
+        <h2>Add an imaginary country</h2>
+        <form method="POST" action="/add_country">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="name" placeholder="Country name" autofocus="">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="hdi_rank" placeholder="Hdi Rank">
+                </div>
+            </div>
+            <button class="button is-block is-info is-large is-fullwidth">Add new country</button>
+        </form>
+        <br>
+        {# delete country#}
+        <h2>Delete country</h2>
+        <form method="POST" action="/delete_country">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="name" placeholder="Country name" autofocus="">
+                </div>
+            </div>
+            <button class="button is-block is-info is-large is-fullwidth">Delete country</button>
+        </form>
+        {# add country#}
+{#        # new_name, new_hdi_rank, name#}
+        <h2>Update an existing country</h2>
+        <form method="POST" action="/update_country">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="name" placeholder="Country name" autofocus="">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="new_name" placeholder="Country new name" autofocus="">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="new_hdi_rank" placeholder="New Hdi Rank">
+                </div>
+            </div>
+            <button class="button is-block is-info is-large is-fullwidth">Update country</button>
+        </form>
+
+
+        <h1>HDI Operations</h1>
+
+        <h2>Insert country HDI</h2>
+        <form method="POST" action="/insert_hdi">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="name" placeholder="Country name" autofocus="">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="hdi" placeholder="hdi">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="life" placeholder="Life expt.">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="education_e" placeholder="Education expt.">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="education_m" placeholder="Education Mean">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="gnhd" placeholder="GNHD">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="gni" placeholder="GNI">
+                </div>
+            </div>
+            <button class="button is-block is-info is-large is-fullwidth">Add new country</button>
+        </form>
+        <br>
+
+        <h2>Update country HDI</h2>
+        <form method="POST" action="/update_hdi">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="name" placeholder="Country name" autofocus="">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="hdi" placeholder="hdi">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="life" placeholder="Life expt.">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="education_e" placeholder="Education expt.">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="education_m" placeholder="Education Mean">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="gnhd" placeholder="GNHD">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="gni" placeholder="GNI">
+                </div>
+            </div>
+
+            <button class="button is-block is-info is-large is-fullwidth">Update country HDI</button>
+        </form>
+
+        <h2>Delete country HDI</h2>
+        <form method="POST" action="/delete_hdi">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="name" placeholder="Country name" autofocus="">
+                </div>
+            </div>
+            <button class="button is-block is-info is-large is-fullwidth">Delete country HDI</button>
+        </form>
+
+
+
+        <h1>Historical Operations</h1>
+        <h2>Insert country historical</h2>
+        <form method="POST" action="/insert_historical">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="name" placeholder="Country name" autofocus="">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="year1990" placeholder="year1990">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="year2000" placeholder="year2000">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="year2010" placeholder="year2010">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="year2011" placeholder="year2011">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="year2012" placeholder="year2012">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="year2013" placeholder="year2013">
+                </div>
+            </div>
+            <button class="button is-block is-info is-large is-fullwidth">Add new country historical</button>
+        </form>
+        <br>
+
+        <h2>Update country historical</h2>
+        <form method="POST" action="/update_historical">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="name" placeholder="Country name" autofocus="">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="year1990" placeholder="year1990">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="year2000" placeholder="year2000">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="year2010" placeholder="year2010">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="year2011" placeholder="year2011">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="year2012" placeholder="year2012">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="number" name="year2013" placeholder="year2013">
+                </div>
+            </div>
+            <button class="button is-block is-info is-large is-fullwidth">Update country historical</button>
+        </form>
+
+        <h2>Delete country historical</h2>
+        <form method="POST" action="/delete_historical">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" name="name" placeholder="Country name" autofocus="">
+                </div>
+            </div>
+            <button class="button is-block is-info is-large is-fullwidth">Delete country historical</button>
+        </form>
+
+</body>
+</html>

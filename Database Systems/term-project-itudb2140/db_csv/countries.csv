@@ -1,0 +1,196 @@
+country_id,HDI Rank,Country
+0,1.0,Norway
+1,2.0,Australia
+2,3.0,Switzerland
+3,4.0,Denmark
+4,5.0,Netherlands
+5,6.0,Germany
+6,6.0,Ireland
+7,8.0,United States
+8,9.0,Canada
+9,9.0,New Zealand
+10,11.0,Singapore
+11,12.0,"Hong Kong, China (SAR)"
+12,13.0,Liechtenstein
+13,14.0,Sweden
+14,14.0,United Kingdom
+15,16.0,Iceland
+16,17.0,Korea (Republic of)
+17,18.0,Israel
+18,19.0,Luxembourg
+19,20.0,Japan
+20,21.0,Belgium
+21,22.0,France
+22,23.0,Austria
+23,24.0,Finland
+24,25.0,Slovenia
+25,26.0,Spain
+26,27.0,Italy
+27,28.0,Czech Republic
+28,29.0,Greece
+29,30.0,Estonia
+30,31.0,Brunei Darussalam
+31,32.0,Cyprus
+32,32.0,Qatar
+33,34.0,Andorra
+34,35.0,Slovakia
+35,36.0,Poland
+36,37.0,Lithuania
+37,37.0,Malta
+38,39.0,Saudi Arabia
+39,40.0,Argentina
+40,41.0,United Arab Emirates
+41,42.0,Chile
+42,43.0,Portugal
+43,44.0,Hungary
+44,45.0,Bahrain
+45,46.0,Latvia
+46,47.0,Croatia
+47,48.0,Kuwait
+48,49.0,Montenegro
+49,50.0,Belarus
+50,50.0,Russian Federation
+51,52.0,Oman
+52,52.0,Romania
+53,52.0,Uruguay
+54,55.0,Bahamas
+55,56.0,Kazakhstan
+56,57.0,Barbados
+57,58.0,Antigua and Barbuda
+58,59.0,Bulgaria
+59,60.0,Palau
+60,60.0,Panama
+61,62.0,Malaysia
+62,63.0,Mauritius
+63,64.0,Seychelles
+64,64.0,Trinidad and Tobago
+65,66.0,Serbia
+66,67.0,Cuba
+67,67.0,Lebanon
+68,69.0,Costa Rica
+69,69.0,Iran (Islamic Republic of)
+70,71.0,Venezuela (Bolivarian Republic of)
+71,72.0,Turkey
+72,73.0,Sri Lanka
+73,74.0,Mexico
+74,75.0,Brazil
+75,76.0,Georgia
+76,77.0,Saint Kitts and Nevis
+77,78.0,Azerbaijan
+78,79.0,Grenada
+79,80.0,Jordan
+80,81.0,The former Yugoslav Republic of Macedonia
+81,81.0,Ukraine
+82,83.0,Algeria
+83,84.0,Peru
+84,85.0,Albania
+85,85.0,Armenia
+86,85.0,Bosnia and Herzegovina
+87,88.0,Ecuador
+88,89.0,Saint Lucia
+89,90.0,China
+90,90.0,Fiji
+91,90.0,Mongolia
+92,93.0,Thailand
+93,94.0,Dominica
+94,94.0,Libya
+95,96.0,Tunisia
+96,97.0,Colombia
+97,97.0,Saint Vincent and the Grenadines
+98,99.0,Jamaica
+99,100.0,Tonga
+100,101.0,Belize
+101,101.0,Dominican Republic
+102,103.0,Suriname
+103,104.0,Maldives
+104,105.0,Samoa
+105,106.0,Botswana
+106,107.0,Moldova (Republic of)
+107,108.0,Egypt
+108,109.0,Turkmenistan
+109,110.0,Gabon
+110,110.0,Indonesia
+111,112.0,Paraguay
+112,113.0,"Palestine, State of"
+113,114.0,Uzbekistan
+114,115.0,Philippines
+115,116.0,El Salvador
+116,116.0,South Africa
+117,116.0,Viet Nam
+118,119.0,Bolivia (Plurinational State of)
+119,120.0,Kyrgyzstan
+120,121.0,Iraq
+121,122.0,Cabo Verde
+122,123.0,Micronesia (Federated States of)
+123,124.0,Guyana
+124,125.0,Nicaragua
+125,126.0,Morocco
+126,126.0,Namibia
+127,128.0,Guatemala
+128,129.0,Tajikistan
+129,130.0,India
+130,131.0,Honduras
+131,132.0,Bhutan
+132,133.0,Timor-Leste
+133,134.0,Syrian Arab Republic
+134,134.0,Vanuatu
+135,136.0,Congo
+136,137.0,Kiribati
+137,138.0,Equatorial Guinea
+138,139.0,Zambia
+139,140.0,Ghana
+140,141.0,Lao People's Democratic Republic
+141,142.0,Bangladesh
+142,143.0,Cambodia
+143,143.0,Sao Tome and Principe
+144,145.0,Kenya
+145,145.0,Nepal
+146,147.0,Pakistan
+147,148.0,Myanmar
+148,149.0,Angola
+149,150.0,Swaziland
+150,151.0,Tanzania (United Republic of)
+151,152.0,Nigeria
+152,153.0,Cameroon
+153,154.0,Madagascar
+154,155.0,Zimbabwe
+155,156.0,Mauritania
+156,156.0,Solomon Islands
+157,158.0,Papua New Guinea
+158,159.0,Comoros
+159,160.0,Yemen
+160,161.0,Lesotho
+161,162.0,Togo
+162,163.0,Haiti
+163,163.0,Rwanda
+164,163.0,Uganda
+165,166.0,Benin
+166,167.0,Sudan
+167,168.0,Djibouti
+168,169.0,South Sudan
+169,170.0,Senegal
+170,171.0,Afghanistan
+171,172.0,Côte d'Ivoire
+172,173.0,Malawi
+173,174.0,Ethiopia
+174,175.0,Gambia
+175,176.0,Congo (Democratic Republic of the)
+176,177.0,Liberia
+177,178.0,Guinea-Bissau
+178,179.0,Mali
+179,180.0,Mozambique
+180,181.0,Sierra Leone
+181,182.0,Guinea
+182,183.0,Burkina Faso
+183,184.0,Burundi
+184,185.0,Chad
+185,186.0,Eritrea
+186,187.0,Central African Republic
+187,188.0,Niger
+188,-1.0,Arab States
+189,-1.0,East Asia and the Pacific
+190,-1.0,Europe and Central Asia
+191,-1.0,Latin America and the Caribbean
+192,-1.0,South Asia
+193,-1.0,Sub-Saharan Africa
+194,-1.0,World

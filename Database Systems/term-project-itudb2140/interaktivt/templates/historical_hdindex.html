@@ -1,0 +1,37 @@
+{% extends "layout.html" %} {% block title %}GDI - Countries{% endblock %} {%
+block content %}
+
+<h1 class="title">{{ country_name }} Human Development Indexes</h1>
+<table class="table table-primary table-hover">
+  <thead>
+    <tr>
+      <a
+        href="{{ url_for('main.countries') }}"
+        style="float: left"
+        class="btn btn-primary"
+        ><span>&#8592; Back to Countries HDI</span>
+      </a>
+    </tr>
+    <tr>
+      <th scope="col">Country Name</th>
+      <th scope="col">Year 1990</th>
+      <th scope="col">Year 2000</th>
+      <th scope="col">Year 2010</th>
+      <th scope="col">Year 2011</th>
+      <th scope="col">Year 2012</th>
+      <th scope="col">Year 2013</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-success">
+      <td>{{ country_name }}</td>
+      <td>{{ historical_hdindex.year1990 }}</td>
+      <td>{{ historical_hdindex.year2000 }}</td>
+      <td>{{ historical_hdindex.year2010 }}</td>
+      <td>{{ historical_hdindex.year2011 }}</td>
+      <td>{{ historical_hdindex.year2012 }}</td>
+      <td>{{ historical_hdindex.year2013 }}</td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}

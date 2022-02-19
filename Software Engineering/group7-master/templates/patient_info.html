@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block content %}
+<table class="table table-primary table-hover ">
+    <thead>
+      <tr >
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">mail</th>
+        <th scope="col">blood_type</th>
+        <th scope="col">blood_pressure</th>
+        <th scope="col">diagnosis</th>
+        <th scope="col">age</th>
+        <th scope="col">Update</th>
+        <th scope="col">Confirm</th>
+      </tr>
+    </thead>
+    <tbody>
+   
+    <form action="{{ url_for('update_patient_medical_data') }}" method="post">
+         <td> {{info.name}} </td>
+         <td>{{info.surname}} </td>
+         <td> {{info.email}}</td>
+         <td> <input type="text" value="{{info.blood_type}}" name="blood_type"> </td>
+         <td> <input type="text" value="{{info.blood_pressure}}" name="blood_pressure"> </td>
+         <td> {{info.diagnosis}}</td>
+         <td> {{info.age}}</td>
+         <td>
+            <button type="submit" class="btn btn-warning btn-lg"
+            style="padding-left: 2.5rem; padding-right: 2.5rem;">Update Info</button>
+         </td>
+         <input type="hidden" value="{{notification_id}}" name="Notification_id">
+         <input type="hidden" value="{{info.patient_id}}" name="user_key">
+    </form>
+          {% set patient_info_id=info.patient_id%}
+          <td>
+            <form action="{{ url_for('examine_patient_info',user_key=patient_info_id,notification_key=notification_id) }}" method="post">
+                <button type="submit" class="btn btn-primary btn-lg"
+                style="padding-left: 2.5rem; padding-right: 2.5rem;">Confirm a</button>
+            </form>
+          </td>
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,207 @@
+{% extends "layout.html" %} {% block title %}Login{% endblock %} {% block
+content %}
+
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+  <div class="hero-container" data-aos="fade-in">
+    <h1>Welcome to SmartHealth</h1>
+    <h2>Take Care Of Your Health</h2>
+    <img
+      src="static/img/hero-img.png"
+      alt="Hero Imgs"
+      data-aos="zoom-out"
+      data-aos-delay="100"
+    />
+    {% if not session.loggedin %}
+    <a href="{{url_for('login')}}" class="btn-get-started scrollto"
+      >Get Started</a
+    >
+    {% endif %}
+  </div>
+</section>
+<!-- End Hero Section -->
+
+<main id="main">
+  <!-- ======= Get Started Section ======= -->
+  <section id="get-started" class="padd-section text-center">
+    <div class="container" data-aos="fade-up">
+      <div class="section-title text-center">
+        <h2>Smarthealth Web Application</h2>
+        <p class="separator">Effective Assistant for Doctors</p>
+      </div>
+    </div>
+
+    <div class="container" id="features">
+      <div class="row">
+        <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+          <div class="feature-block">
+            <img src="static/img/svg/cloud.svg" alt="img" />
+            <h4>Introducing Smarthealth</h4>
+            <p>Insight on patient health using artifical intelligence.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="feature-block">
+            <img src="static/img/svg/planet.svg" alt="img" />
+            <h4>User friendly interface</h4>
+            <p>Our modern interface provides ease of use.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
+          <div class="feature-block">
+            <img src="static/img/svg/asteroid.svg" alt="img" />
+            <h4>Communication Through Notifications</h4>
+            <p>Communicate with your doctor using effective notifications.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Get Started Section -->
+
+  <!-- ======= About Us Section ======= -->
+  <section id="about-us" class="about-us padd-section">
+    <div class="container" data-aos="fade-up">
+      <div class="row justify-content-center">
+        <div class="col-md-5 col-lg-3">
+          <img
+            src="static/img/about-img.png"
+            alt="About"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+          />
+        </div>
+
+        <div class="col-md-7 col-lg-5">
+          <div class="about-content" data-aos="fade-left" data-aos-delay="100">
+            <h2><span>SmartHealth</span></h2>
+            <p>
+              Smarthealth provides insight on patient health using artifical
+              intelligence and helping doctors fasten their decision process.
+            </p>
+
+            <ul class="list-unstyled">
+              <li>
+                <i class="vi bi-chevron-right"></i>Patient Condition Prediction
+              </li>
+              <li>
+                <i class="vi bi-chevron-right"></i>Communication Through
+                Notifications
+              </li>
+              <li><i class="vi bi-chevron-right"></i>Easy to Use</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End About Us Section -->
+
+  <!-- ======= Team Section ======= -->
+  <section id="team" class="padd-section text-center">
+    <div class="container" data-aos="fade-up">
+      <div class="section-title text-center">
+        <h2>Team Members</h2>
+        <p class="separator">This is our team.</p>
+      </div>
+
+      <div class="row">
+        <div
+          class="col-md-6 col-md-4 col-lg-3"
+          data-aos="zoom-in"
+          data-aos-delay="100"
+        >
+          <div class="team-block bottom">
+            <img src="static/img/team/1.jpg" class="img-responsive" alt="img" />
+            <div class="team-content">
+              <ul class="list-unstyled">
+                <li>
+                  <a href="https://tr.linkedin.com/in/rmzn8001"
+                    ><i class="bi bi-linkedin"></i
+                  ></a>
+                </li>
+              </ul>
+              <span>Fullstack Developer</span>
+              <h4>Ramazan Yetismis</h4>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="col-md-6 col-md-4 col-lg-3"
+          data-aos="zoom-in"
+          data-aos-delay="300"
+        >
+          <div class="team-block bottom">
+            <img src="static/img/team/3.jpg" class="img-responsive" alt="img" />
+            <div class="team-content">
+              <ul class="list-unstyled">
+                <li>
+                  <a href="#"><i class="bi bi-linkedin"></i></a>
+                </li>
+              </ul>
+              <span>Fullstack Developer</span>
+              <h4>Yasin Abdulkadir Yokus</h4>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="col-md-6 col-md-4 col-lg-3"
+          data-aos="zoom-in"
+          data-aos-delay="200"
+        >
+          <div class="team-block bottom">
+            <img src="static/img/team/2.jpg" class="img-responsive" alt="img" />
+            <div class="team-content">
+              <ul class="list-unstyled">
+                <li>
+                  <a href="#"><i class="bi bi-facebook"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="bi bi-twitter"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="bi bi-linkedin"></i></a>
+                </li>
+              </ul>
+              <span>manager</span>
+              <h4>Kimberly Tran</h4>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="col-md-6 col-md-4 col-lg-3"
+          data-aos="zoom-in"
+          data-aos-delay="400"
+        >
+          <div class="team-block bottom">
+            <img src="static/img/team/4.jpg" class="img-responsive" alt="img" />
+            <div class="team-content">
+              <ul class="list-unstyled">
+                <li>
+                  <a href="#"><i class="bi bi-facebook"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="bi bi-twitter"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="bi bi-linkedin"></i></a>
+                </li>
+              </ul>
+              <span>manager</span>
+              <h4>Kimberly Tran</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Team Section -->
+</main>
+<!-- End #main -->
+
+{% endblock %}

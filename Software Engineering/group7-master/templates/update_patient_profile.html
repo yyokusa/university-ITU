@@ -1,0 +1,576 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+
+<!--if it is Doctor-->
+
+{% if session.loggedin and session.isDoctor%}
+<form action="{{ url_for('update_patient_medical_data') }}" method="post">
+    <div class="container mt-5">
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
+                                class="rounded-circle" width="150">
+                            <div class="m-2">
+                                <p class="text-center">Doctor ID</p>
+                                <input class="text-center" type="text" value="{{info.doctor_id}}" name="doctor_id1"
+                                    readonly style="border: 0cm;">
+
+                            </div>
+                            <input type="hidden" value="{{info.doctor_id}}" name="doctor_id">
+                            <button type="submit" class="btn btn-success btn-lg m-4">Edit Patient</button>
+                            {% if notification_id == None and isNotif == True %}
+                            <div class="alert alert-success" role="alert">
+                                Doctor has confirmed your information. You can check your diagnosis.
+                            </div>
+                            {% endif %}
+
+                            {% if notification_id == None and isNotif == False %}
+                            <div class="alert alert-danger" role="alert">
+                                Please wait doctor to confirm your personal data.
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-8">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Id</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" value="{{info.patient_id}}" name="patient_id" style="border: 0cm;">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" value="{{info.name}}" name="name" style="border: 0cm;">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Surname Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" value="{{info.surname}}" name="surname" style="border: 0cm;">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" value="{{info.email}}" name="email" style="border: 0cm;">
+
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Age</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="number" value="{{info.age}}" name="age" style="border: 0cm;">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">City</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input type="text" value="{{info.city}}" name="city" style="border: 0cm;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gutters-sm">
+                    <div class="col-sm-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h6 class="d-flex align-items-center mb-3"><i
+                                        class="material-icons text-success mr-2">Medical</i> Data</h6>
+                                <small> Gender</small>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" value="{{info.gender}}" name="gender" style="border: 0cm;">
+
+                                </div>
+                                <small>Height</small>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="number" value="{{info.body_height}}" name="body_height"
+                                        style="border: 0cm;">
+
+                                </div>
+                                <small>Weight</small>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="number" value="{{info.body_weight}}" name="body_weight"
+                                        style="border: 0cm;">
+
+                                </div>
+                                <small> Body Mass Index</small>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="number" value="{{info.body_mass_index}}" name="body_mass_index"
+                                        style="border: 0cm;">
+
+                                </div>
+                                <small> Hemoglobin</small>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="number" value="{{info.hemoglobin_a1c}}" name="hemoglobin_a1c"
+                                        style="border: 0cm;">
+
+                                </div>
+                                <small> High Density Lipoprotein Cholesterol</small>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="number" value="{{info.high_density_lipoprotein_cholesterol}}"
+                                        name="high_density_lipoprotein_cholesterol" style="border: 0cm;">
+
+                                </div>
+                                <small> Low Density Lipoprotein Cholesterol</small>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="number" value="{{info.low_density_lipoprotein_cholesterol}}"
+                                        name="low_density_lipoprotein_cholesterol" style="border: 0cm;">
+
+                                </div>
+                                <small> Total Cholesterol</small>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="number" value="{{info.total_cholesterol}}" name="total_cholesterol"
+                                        style="border: 0cm;">
+
+                                </div>
+                                <small> Triglycerides</small>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="number" value="{{info.triglycerides}}" name="triglycerides"
+                                        style="border: 0cm;">
+
+                                </div>
+
+                                <small> Calcium</small>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="number" value="{{info.calcium}}" name="calcium" style="border: 0cm;">
+
+                                </div>
+                                <small> Carbon Dioxide</small>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="number" value="{{info.carbon_dioxide}}" name="carbon_dioxide"
+                                        style="border: 0cm;">
+
+                                </div>
+                                <small> Chloride</small>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="number" value="{{info.chloride}}" name="chloride" style="border: 0cm;">
+
+                                </div>
+                                <small> Creatinine</small>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="number" value="{{info.creatinine}}" name="creatinine"
+                                        style="border: 0cm;">
+
+                                </div>
+                                <small> Glucose</small>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="number" value="{{info.glucose}}" name="glucose" style="border: 0cm;">
+
+                                </div>
+                                <small> Potassium</small>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="number" value="{{info.potassium}}" name="potassium"
+                                        style="border: 0cm;">
+
+                                </div>
+                                <small> Sodium</small>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="number" value="{{info.sodium}}" name="sodium" style="border: 0cm;">
+
+                                </div>
+                                <small> Urea Nitrogen</small>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="number" value="{{info.urea_nitrogen}}" name="urea_nitrogen"
+                                        style="border: 0cm;">
+
+                                </div>
+                                <small> Glomerular Filtration Rate</small>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="number" value="{{info.glomerular_filtration}}"
+                                        name="glomerular_filtration" style="border: 0cm;">
+
+                                </div>
+                                <small> Microalbumin Creatinine Ratio</small>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="number" value="{{info.microalbumin}}" name="microalbumin"
+                                        style="border: 0cm;">
+
+                                </div>
+                                <small> FEV1/FVC</small>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="number" value="{{info.fev1_fvc}}" name="fev1_fvc" style="border: 0cm;">
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h6 class="d-flex align-items-center mb-3"><i
+                                        class="material-icons text-success mr-2">Medical</i> Diagnosis</h6>
+                                <h3>Blood Pressure Risk</h3>
+                                {% if info.blood_pressure_risk != None %}
+                                <div class="col-sm-2 text-secondary">
+                                    <input type="text" value="{{info.blood_pressure_risk}}"
+                                        name="diastolic_blood_pressure" readonly style="border: 0cm">
+                                    {% else %}
+                                    <h4 class="text-danger ">Pending</h4>
+                                    {% endif %}
+                                </div>
+                                <br>
+                                <br>
+                                <h3> Heart Disease Risk</h3>
+                                {% if info.cholesterol_risk != None %}
+                                <div class="col-sm-2 text-secondary">
+                                    <input type="text" value="{{info.cholesterol_risk}}" name="systolic_blood_pressure"
+                                        readonly style="border: 0cm">
+                                    {% else %}
+                                    <h4 class="text-danger ">Pending</h4>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+</form>
+
+
+
+<!--
+          if it is Patient
+        -->
+{% elif session.loggedin%}
+<form action="{{ url_for('update_patient_medical_data') }}" method="post">
+
+    <div class="container">
+        <div class="main-body">
+            <div class="row gutters-sm">
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
+                                    class="rounded-circle" width="150">
+                                <div class="mt-3">
+                                    <p class="text-secondary mb-1">Doctor ID=<input type="text"
+                                            value="{{info.doctor_id}}" name="doctor_id1" readonly style="border: 0cm;">
+                                    </p>
+                                </div>
+                                <input type="hidden" value="{{info.doctor_id}}" name="doctor_id">
+
+                                {% if notification_id == None and isNotif == True %}
+                                <div class="alert alert-success" role="alert">
+                                    Doctor has confirmed your information. You can check your diagnosis.
+                                </div>
+                                {% endif %}
+
+                                {% if notification_id == None and isNotif == False %}
+                                <div class="alert alert-danger" role="alert">
+                                    Please wait doctor to confirm your personal data.
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Id</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" value="{{info.patient_id}}" name="patient_id"
+                                        style="border: 0cm;">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Name</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" value="{{info.name}}" name="name" style="border: 0cm;">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Surname Name</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" value="{{info.surname}}" name="surname" style="border: 0cm;">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" value="{{info.email}}" name="email" style="border: 0cm;">
+
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Age</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="number" value="{{info.age}}" name="age" style="border: 0cm;">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">City</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input type="text" value="{{info.city}}" name="city" style="border: 0cm;">
+                                </div>
+                            </div>
+
+
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-12">
+
+                                    <button type="submit" class="btn btn-info btn-lg">Edit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row gutters-sm">
+                        <div class="col-sm-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6 class="d-flex align-items-center mb-3"><i class="text-success mr-2"></i>Data
+                                    </h6>
+                                    <small> Gender</small>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" value="{{info.gender}}" name="gender" readonly
+                                            style="border: 0cm;">
+
+                                    </div>
+                                    <small>Height</small>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="number" value="{{info.body_height}}" name="body_height" readonly
+                                            style="border: 0cm;">
+
+                                    </div>
+                                    <small>Weight</small>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="number" value="{{info.body_weight}}" name="body_weight" readonly
+                                            style="border: 0cm;">
+
+                                    </div>
+                                    <small> Body Mass Index</small>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="number" value="{{info.body_mass_index}}" name="body_mass_index"
+                                            readonly style="border: 0cm;">
+
+                                    </div>
+
+                                    <small> Hemoglobin</small>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="number" value="{{info.hemoglobin_a1c}}" name="hemoglobin_a1c"
+                                            style="border: 0cm;">
+
+                                    </div>
+                                    <small> High Density Lipoprotein Cholesterol</small>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="number" value="{{info.high_density_lipoprotein_cholesterol}}"
+                                            name="high_density_lipoprotein_cholesterol" style="border: 0cm;">
+
+                                    </div>
+                                    <small> Low Density Lipoprotein Cholesterol</small>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="number" value="{{info.low_density_lipoprotein_cholesterol}}"
+                                            name="low_density_lipoprotein_cholesterol" style="border: 0cm;">
+
+                                    </div>
+                                    <small> Total Cholesterol</small>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="number" value="{{info.total_cholesterol}}" name="total_cholesterol"
+                                            style="border: 0cm;">
+
+                                    </div>
+                                    <small> Triglycerides</small>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="number" value="{{info.triglycerides}}" name="triglycerides"
+                                            style="border: 0cm;">
+
+                                    </div>
+
+                                    <small> Calcium</small>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="number" value="{{info.calcium}}" name="calcium"
+                                            style="border: 0cm;">
+
+                                    </div>
+                                    <small> Carbon Dioxide</small>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="number" value="{{info.carbon_dioxide}}" name="carbon_dioxide"
+                                            style="border: 0cm;">
+
+                                    </div>
+                                    <small> Chloride</small>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="number" value="{{info.chloride}}" name="chloride"
+                                            style="border: 0cm;">
+
+                                    </div>
+                                    <small> Creatinine</small>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="number" value="{{info.creatinine}}" name="creatinine"
+                                            style="border: 0cm;">
+
+                                    </div>
+                                    <small> Glucose</small>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="number" value="{{info.glucose}}" name="glucose"
+                                            style="border: 0cm;">
+
+                                    </div>
+                                    <small> Potassium</small>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="number" value="{{info.potassium}}" name="potassium"
+                                            style="border: 0cm;">
+
+                                    </div>
+                                    <small> Sodium</small>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="number" value="{{info.sodium}}" name="sodium" style="border: 0cm;">
+
+                                    </div>
+                                    <small> Urea Nitrogen</small>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="number" value="{{info.urea_nitrogen}}" name="urea_nitrogen"
+                                            style="border: 0cm;">
+
+                                    </div>
+                                    <small> Glomerular Filtration Rate</small>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="number" value="{{info.glomerular_filtration}}"
+                                            name="glomerular_filtration" style="border: 0cm;">
+
+                                    </div>
+                                    <small> Microalbumin Creatinine Ratio</small>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="number" value="{{info.microalbumin}}" name="microalbumin"
+                                            style="border: 0cm;">
+
+                                    </div>
+                                    <small> FEV1/FVC</small>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="number" value="{{info.fev1_fvc}}" name="fev1_fvc"
+                                            style="border: 0cm;">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h6 class="d-flex align-items-center mb-3"><i
+                                        class="material-icons text-info mr-2">Medical</i>Diagnosis</h6>
+                                <h3>Blood Pressure Risk</h3>
+                                {% if info.blood_pressure_risk != None %}
+                                <div class="col-sm-7 text-secondary">
+                                    <input type="text" value="{{info.blood_pressure_risk}}"
+                                        name="diastolic_blood_pressure" readonly style="border: 0cm;">
+                                    {% else %}
+                                    <input type="hidden" value="{{info.blood_pressure_risk}}"
+                                        name="diastolic_blood_pressure" readonly
+                                        style="border: 0cm;color: red; margin-left: 0.2cm;">
+                                    <br>
+                                    <h4 style="color: red;">Pending</h4>
+                                    {% endif %}
+                                </div>
+                                <h3> &nbsp Heart Disease Riskk</h3>
+                                <div class="col-sm-7 text-secondary">
+                                    {% if info.cholesterol_risk != None %}
+                                    &nbsp<input class="col-lg-10" type="text" value="{{info.cholesterol_risk}}"
+                                        name="systolic_blood_pressure" readonly style="border: 0cm;">
+                                    {% else %}
+                                    <br>
+                                    <h3 style="color: red;">Pending</h3>
+                                    <input class="col-lg-10" type="hidden" value="{{info.cholesterol_risk}}"
+                                        name="systolic_blood_pressure" readonly style="border: 0cm;">
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+</form>
+
+
+
+
+{% endif %}
+
+<table class="table table-succes ">
+    <tbody style="float: right; margin-right: 20%;">
+
+        {% if notification_id != None %}
+        {% set patient_info_id=info.patient_id %}
+        {% set notification_key=notification_id %}
+        <td>
+            <form
+                action="{{ url_for('examine_patient_info',user_key=info.patient_id,notification_key=notification_id) }}"
+                method="post">
+                <div>
+                    <input class="form-check-input m-2" type="checkbox" value="blood" id="flexCheckDefault"
+                        name='model'>
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Predict the risk level of hypertension
+                    </label>
+                </div>
+                <div>
+                    <input class="form-check-input m-2" type="checkbox" value="chol" id="flexCheckChecked" name='model'>
+                    <label class="form-check-label" for="flexCheckChecked">
+                        Predict the risk level of heart disease
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg mt-3"
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Confirm</button>
+            </form>
+        </td>
+        {% endif %}
+    </tbody>
+</table>
+
+{% endblock %}

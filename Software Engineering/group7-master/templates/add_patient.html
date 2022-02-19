@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="column is-4 is-offset-4">
+    <h3 class="title">Add New Patient</h3>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-danger">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+        {% endwith %}
+        <section class="vh-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-md-9 col-lg-6 col-xl-5">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.png" class="img-fluid"
+              alt="Sample image">
+          </div>
+          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+            <form action="{{ url_for('insert_patient') }}" method="post">
+                <!-- id input -->
+              <div class="form-outline mb-4">
+                <input required="required" name="id" type="text" id="form3Example3" class="form-control form-control-lg"
+                  placeholder="" />
+                <label class="form-label" for="form3Example3">Patient ID Number</label>
+              </div>
+                <!-- Name input -->
+              <div class="form-outline mb-4">
+                <input required="required" name="name" type="text" id="form3Example3" class="form-control form-control-lg"
+                  placeholder="" />
+                <label class="form-label" for="form3Example3">Patient Name</label>
+              </div>
+                <!-- Surname input -->
+              <div class="form-outline mb-4">
+                <input required="required" name="surname" type="text" id="form3Example3" class="form-control form-control-lg"
+                  placeholder="" />
+                <label class="form-label" for="form3Example3">Patient Surname</label>
+              </div>
+               <!-- email input -->
+              <div class="form-outline mb-4">
+                <input required="required" name="email" type="email" id="form3Example3" class="form-control form-control-lg"
+                  placeholder="" />
+                <label class="form-label" for="form3Example3">Patient Email</label>
+              </div>
+                <!-- Age input -->
+              <div class="form-outline mb-3">
+                <input id="form3Example4" name="age" type="number" placeholder="" class="form-control form-control-lg" required="required" style="margin-bottom: 4px;"/>
+                <label class="form-label" for="form3Example4">Patient Age</label>
+              </div>
+              <div class="text-center text-lg-start mt-4 pt-2">
+                <button type="submit" class="btn btn-primary btn-lg"
+                  style="padding-left: 2.5rem; padding-right: 2.5rem;">Add Patient</button>
+              </div>
+            </form>
+          </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
